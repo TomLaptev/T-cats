@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 window.onload = function () {
   /*----------------Menu dropdown---------------------*/
@@ -33,7 +33,7 @@ window.onload = function () {
 };
 /*----------------Functions on scroll-end---------------------*/
 
-let out = "";
+let grid = "";
 let cardsNumber = 3;
 
 // sort by price
@@ -50,8 +50,7 @@ const renderCard = (cardData) => {
     <img class="content-card__photo" src=" ` +
     cardData.photo +
     ` " /> 
-  
-   <div class="content-card__discount"  >` +
+     <div class="content-card__discount"  >` +
     cardData.discount +
     `</div>
   
@@ -101,59 +100,50 @@ const renderCard = (cardData) => {
 function renderData() {
   cards.forEach((el, index) => {
     if (index < cardsNumber) {
-      out += renderCard(el);
+      grid += renderCard(el);
     }
   });
 }
 /*----------------Add database-end---------------------*/
 
 renderData();
-document.getElementById("grid").innerHTML = out;
+document.getElementById("grid").innerHTML = grid;
 supportRender();
 
-const showMore = document.querySelector(".show-more-btn");
-showMore.onclick = function () {
-  out = "";
+const btnAddCards = document.querySelector(".show-more-btn");
+btnAddCards.onclick = function () {
+  grid = "";
   cardsNumber += 20;
   renderData();
-  document.getElementById("grid").innerHTML = out;
+  document.getElementById("grid").innerHTML = grid;
   supportRender();
-  console.log("Start: " + cardsNumber);
 };
 
 function supportRender() {
-  const discountNull = document.querySelectorAll(".content-card__discount");
-  for (let i = 0; i < discountNull.length; i++) {
-    if (discountNull[i].innerHTML === "") {
-      discountNull[i].classList.add("hide");
-    }
-  }
+  const discountNone = document.querySelectorAll(".content-card__discount");
+  discountNone.forEach((el) => {
+    if (el.innerHTML == 0) el.classList.add("hide");
+  });
 
   const button = document.querySelectorAll(".content-card__button");
-  for (let i = 0; i < button.length; i++) {
-    if (button[i].innerHTML == 0) {
-        button[i].classList.add("content-card__button--inactive");
+  button.forEach((el) => {
+    if (el.innerHTML == 0) {
+      el.classList.add("content-card__button--inactive");
     }
-  }
+  });
 
   /*----------------Add content-card__like--checked---------------------*/
 
   const likeId = document.getElementById("like");
   const elem = likeId.querySelector("svg");
   const like = document.querySelectorAll(".content-card__like");
-  const likeChecked = "content-card__like--checked";
+
   for (let i = 0; i < like.length; i++) {
     like[i].appendChild(elem.cloneNode(true));
-
     like[i].addEventListener("click", selectDate);
   }
+  
   function selectDate() {
-    /*  if (this.classList.contains(likeChecked)) {
-      this.classList.remove(likeChecked);
-    } else {
-      this.classList.add(likeChecked);
-    } */
-
-    this.classList.toggle(likeChecked);
+    this.classList.toggle("content-card__like--checked");
   }
 }
