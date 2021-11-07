@@ -16,7 +16,7 @@
             <div class="header-top-row">
                <div class="header-hamburger">
                   @@include('image/menu.svg')
-                  <ul class="header-hamburger-menu hide">
+                  <ul class="header-hamburger-menu">
                      <li class="header-hamburger-menu__item"><a href="">Main</a></li>
                      <li class="header-hamburger-menu__item"><a href="">Gallery</a></li>
                      <li class="header-hamburger-menu__item"><a href="">News</a></li>
@@ -50,15 +50,15 @@
    
    <div class="container">
       <div class="content-sort-settings">
-         <span class="content-sort-settings__title"> Сортировать по:</span>
-         <span class="content-sort-settings__btn content-sort-settings__btn--down">
-            Цене
+         <div class="content-sort-settings__title"> Сортировать по:</div>
+         <div class="content-sort-settings__btn content-sort-settings__btn--first ">
+           <span>Цене</span> 
             @@include('image/pointer.svg')
-         </span>
-         <span class="content-sort-settings__btn content-sort-settings__btn--up">
-            Возрасту
+         </div>
+         <div class="content-sort-settings__btn content-sort-settings__btn--last">
+           <span> Возрасту</span>
             @@include('image/pointer.svg')
-         </span>
+         </div>
       </div>
 
 <div id="like" hidden>@@include('image/cards/like.svg')</div>      
@@ -82,11 +82,9 @@
                <label for="subscribeOnNewCheckbox">Подписаться на новости</label>
             </form>
          </div>
-         <div class="btnGoTop" >
-            <div class="btnGoTop__wrapper">
-               <i class="scroll" title="Back to Top" data-scroll="toTop"></i>
-            </div>
-         </div> 
+         <div class="btn-up">
+            <div id="go-up" title="Back to Top"  hidden></div>
+        </div>
       </footer>
    </div>
  

@@ -81,38 +81,27 @@ body {
 //CONTENT
 .content-sort-settings {
   padding: 40px 0;
+  display: flex;
+  align-items: baseline;
 
   &__title {
     font-size: 24px;
     font-weight: 700;
-    margin-right: 50px;
+    margin-right: 55px;
   }
 
   &__btn {
-    margin-right: 55px;
+    margin-right: 60px;
     cursor: pointer;
-
-    &--down {
-      position: relative;
-
-      svg {
-        position: absolute;
-        left: 64px;
-        bottom: 5px;
-        transform: rotate(180deg);
-      }
+    span{
+        margin-right: 10px;
     }
 
     &--up {
-      position: relative;
-
       svg {
-        position: absolute;
-        left: 110px;
-        bottom: 5px;
         transform: rotate(180deg);
       }
-    }
+    } 
 
 
   }
@@ -122,6 +111,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-bottom: 60px;
 
   &__item {
     flex: 0 1 32.3%;
@@ -279,7 +269,7 @@ body {
   justify-content: center;
   align-items: center;
   max-width: 380px;
-  margin: 70px auto 80px;
+  margin: 0px auto 80px;
   font-size: 14px;
   padding: 25px 0;
   border-radius: 10px;
@@ -391,31 +381,30 @@ body {
   background-image: url("../img/checkbox.svg");
 }
 
-.btnGoTop {
-  max-width: 1180px;
-  width: 100%;
-  bottom: 0px;
-
-  &__wrapper {
+.btn-up {
+    position: absolute;
+    max-width: 1440px;
+    width: 100%;
+    bottom: 0px;
     display: flex;
     justify-content: flex-end;
+  
+    #go-up {
+      bottom: 0;
+      width: 60px;
+      height: 40px;
+      background: url("../img/go-to-top.png") no-repeat 50% 50%;
+      background-color: $bgGoTopColor;
+      border-radius: 3px 3px 0 0;
+      cursor: pointer;
+    }
   }
-
-  i {
+  
+  .go-top {
     display: block;
-    width: 60px;
-    height: 40px;
-    background: url("../img/go-to-top.png") no-repeat 50% 50%;
-    background-color: $bgGoTopColor;
-
-    border-radius: 3px 3px 0 0;
+    position: fixed;
   }
-}
-
-.go-top {
-  display: block;
-  position: fixed;
-}
+  
 
 .hide {
   display: none !important;

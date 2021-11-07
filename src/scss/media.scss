@@ -1,24 +1,30 @@
 @media screen and (max-width: 1180px) {
+
   .container {
     padding: 0 20px;
   }
-  /**/
+  
   .header {
+
     &__wrapper {
       padding-top: 20px;
     }
   }
+
   .header-navmenu {
     margin-left: 50px;
+
     &__item {
       margin-left: 15px;
     }
   }
+
   .header-contact {
     flex-direction: column;
   }
 
   .content-grid {
+
     &__item {
       flex: 0 1 49%;
       margin-bottom: 20px;
@@ -27,6 +33,7 @@
         margin-right: 0;
         margin-left: 0;
       }
+
       &:nth-child(2n) {
         margin-left: 2%;
       }
@@ -39,6 +46,11 @@
 
   .footer-info {
     width: 100%;
+    
+
+    strong {        
+        margin-bottom: 25px;
+      }
 
     span {
       width: 100%;
@@ -61,7 +73,8 @@
     }
   }
 
- .btnGoTop {
+  .btnGoTop {
+      
     i {
       margin-right: 40px;
     }
@@ -99,11 +112,6 @@
   .header-hamburger {
     display: block;
     position: relative;
-
-    /*  i {
-      display: block;
-      font-size: 36px;
-    } */
 
     svg {
       width: 36px;
@@ -152,10 +160,11 @@
     display: flex;
     flex-direction: column;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 0;
 
     &__title {
       margin-bottom: 30px;
+      margin-right: 0px;
     }
 
     &__btn {
@@ -181,22 +190,27 @@
     }
   }
 
-.footer{
-
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 60px 50px;
+  .footer {
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 50px;
+    }
   }
-}
   .footer-info {
     margin-bottom: 20px;
     align-items: center;
+    padding-right: 0px;
 
     strong,
     span {
       text-align: center;
+      font-size: 30px;
+    }
+
+    span{
+        font-size: 20px;   
     }
   }
 
@@ -209,12 +223,26 @@
       margin-bottom: 0;
 
       input {
-        font-size: 20px;
+        font-size: 16px;
         margin-left: 0;
         margin-bottom: 15px;
+        padding: 20px;
         min-width: 100%;
       }
     }
   }
-  
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0 5px;
+      }
+  .content-card {
+    &__description {
+      padding: 10px;
+    }
+    &__specifications {
+      padding-left: 10px;
+    }
+  }
 }

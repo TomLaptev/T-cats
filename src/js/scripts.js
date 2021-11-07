@@ -13,7 +13,7 @@ window.onload = function () {
     myToTop();
   };
 
-  const toTop = document.querySelector(".btnGoTop");
+  const toTop = document.getElementById("go-up");
   function myToTop() {
     if (window.pageYOffset > 200) {
       toTop.classList.add("go-top");
@@ -96,6 +96,7 @@ const renderCard = (cardData) => {
      </div>`
   );
 };
+/*----------------Add database-end---------------------*/
 
 function renderData() {
   cards.forEach((el, index) => {
@@ -104,20 +105,88 @@ function renderData() {
     }
   });
 }
-/*----------------Add database-end---------------------*/
 
 renderData();
 document.getElementById("grid").innerHTML = grid;
 supportRender();
 
-const btnAddCards = document.querySelector(".show-more-btn");
-btnAddCards.onclick = function () {
+/*----------------Add cards start---------------------*/
+const addCards = document.querySelector(".show-more-btn");
+addCards.onclick = function () {
+  if (cardsNumber <= cards.length) {
+    grid = "";
+    cardsNumber += 20;
+    renderData();
+    document.getElementById("grid").innerHTML = grid;
+    supportRender();
+  }else{
+      addCards.classList.add("hide");
+  }
+};
+/*----------------Add cards end---------------------*/
+
+/*----------------Sorting ---------------------*/
+const priceSorting = document.querySelector(
+  ".content-sort-settings__btn--first"
+);
+const ageSorting = document.querySelector(".content-sort-settings__btn--last");
+const sortingUp = "content-sort-settings__btn--up";
+
+/*----------------by price start---------------------*/
+
+priceSorting.onclick = function () {
+  if (this.classList.contains("content-sort-settings__btn--up")) {
+    cards.sort((a, b) =>
+      parseInt(a.price) < parseInt(b.price)
+        ? 1
+        : parseInt(b.price) < parseInt(a.price)
+        ? -1
+        : 0
+    );
+    this.classList.remove(sortingUp);
+  } else {
+    cards.sort((a, b) =>
+      parseInt(a.price) > parseInt(b.price)
+        ? 1
+        : parseInt(b.price) > parseInt(a.price)
+        ? -1
+        : 0
+    );
+    this.classList.add(sortingUp);
+  }
   grid = "";
-  cardsNumber += 20;
   renderData();
   document.getElementById("grid").innerHTML = grid;
   supportRender();
 };
+/*----------------by price end---------------------*/
+/*----------------Sort by age start--------------------*/
+ageSorting.onclick = function () {
+  if (this.classList.contains("content-sort-settings__btn--up")) {
+    cards.sort((a, b) =>
+      parseInt(a.age) < parseInt(b.age)
+        ? 1
+        : parseInt(b.age) < parseInt(a.age)
+        ? -1
+        : 0
+    );
+    this.classList.remove(sortingUp);
+  } else {
+    cards.sort((a, b) =>
+      parseInt(a.age) > parseInt(b.age)
+        ? 1
+        : parseInt(b.age) > parseInt(a.age)
+        ? -1
+        : 0
+    );
+    this.classList.add(sortingUp);
+  }
+  grid = "";
+  renderData();
+  document.getElementById("grid").innerHTML = grid;
+  supportRender();
+};
+/*----------------Sort by age end---------------------*/
 
 function supportRender() {
   const discountNone = document.querySelectorAll(".content-card__discount");
@@ -142,7 +211,7 @@ function supportRender() {
     like[i].appendChild(elem.cloneNode(true));
     like[i].addEventListener("click", selectDate);
   }
-  
+
   function selectDate() {
     this.classList.toggle("content-card__like--checked");
   }
