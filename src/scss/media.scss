@@ -129,12 +129,14 @@
 
   .header-hamburger-menu {
     position: absolute;
-    top: 0;
-    left: 55px;
+    top: 50px;
+    left: 0px;
     display: flex;
     flex-direction: column;
     background-color: $hamburgerMenuBackgroundColor;
-    width: 250px;
+    width: 0px;
+    transition: width 0.4s linear;
+    overflow: hidden;
 
     &__item {
       padding: 10px;
@@ -150,6 +152,10 @@
         cursor: pointer;
       }
     }
+  }
+
+  .menuIsVisible {
+    width: 250px;
   }
 
   .header-contact {

@@ -1,11 +1,13 @@
-//"use strict";
-
 window.onload = function () {
   /*----------------Menu dropdown---------------------*/
   const btnMenu = document.querySelector(".header-hamburger");
   const dropDownMenu = document.querySelector(".header-hamburger-menu");
+
   btnMenu.addEventListener("click", function () {
-    dropDownMenu.classList.toggle("hide");
+    dropDownMenu.classList.toggle("menuIsVisible");
+  });
+  dropDownMenu.addEventListener("click", function () {
+    dropDownMenu.classList.toggle("menuIsVisible");
   });
 
   /*----------------Functions on scroll-start---------------------*/
@@ -32,16 +34,6 @@ window.onload = function () {
   });
 };
 /*----------------Functions on scroll-end---------------------*/
-
-let grid = "";
-let cardsNumber = 3;
-
-// sort by price
-/* cards.sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? 1 : parseInt(b.price) > parseInt(a.price) ? -1 : 0));
-console.log(cards);  */
-
-/*cards.sort((a, b) => (parseInt(a.age) > parseInt(b.age) ? 1 : parseInt(b.age) > parseInt(a.age) ? -1 : 0));
-console.log(cards);*/
 
 /*----------------Add database-start---------------------*/
 const renderCard = (cardData) => {
@@ -98,6 +90,9 @@ const renderCard = (cardData) => {
 };
 /*----------------Add database-end---------------------*/
 
+let grid = "";
+let cardsNumber = 3; /* initial number of cards 0... cards.length */
+
 function renderData() {
   cards.forEach((el, index) => {
     if (index < cardsNumber) {
@@ -119,8 +114,8 @@ addCards.onclick = function () {
     renderData();
     document.getElementById("grid").innerHTML = grid;
     supportRender();
-  }else{
-      addCards.classList.add("hide");
+  } else {
+    addCards.classList.add("hide");
   }
 };
 /*----------------Add cards end---------------------*/
@@ -207,10 +202,10 @@ function supportRender() {
   const elem = likeId.querySelector("svg");
   const like = document.querySelectorAll(".content-card__like");
 
-  for (let i = 0; i < like.length; i++) {
-    like[i].appendChild(elem.cloneNode(true));
-    like[i].addEventListener("click", selectDate);
-  }
+  like.forEach((item) => {
+    item.appendChild(elem.cloneNode(true));
+    item.addEventListener("click", selectDate);
+  });
 
   function selectDate() {
     this.classList.toggle("content-card__like--checked");
