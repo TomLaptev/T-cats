@@ -15,7 +15,7 @@ window.onload = function () {
     myToTop();
   };
 
-  const toTop = document.getElementById("go-up");
+  const toTop = document.querySelector(".go-up");
   function myToTop() {
     if (window.pageYOffset > 200) {
       toTop.classList.add("go-top");
