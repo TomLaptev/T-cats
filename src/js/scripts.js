@@ -46,7 +46,7 @@ const renderCard = (cardData) => {
     cardData.discount +
     `</div>
   
-   <div class="content-card__like " ></div>
+   <li class="content-card__like " ></li>
    <div class="content-card__description">
   
    <div class="content-card__title">` +
@@ -91,7 +91,7 @@ const renderCard = (cardData) => {
 /*----------------Add database-end---------------------*/
 
 let grid = "";
-let cardsNumber = 3; /* initial number of cards 0... cards.length */
+let cardsNumber = 6; /* initial number of cards 0... cards.length */
 
 function renderData() {
   cards.forEach((el, index) => {
@@ -197,17 +197,22 @@ function supportRender() {
   });
 
   /*----------------Add content-card__like--checked---------------------*/
-
+  const fieldGrid = document.getElementById("grid");
   const likeId = document.getElementById("like");
   const elem = likeId.querySelector("svg");
   const like = document.querySelectorAll(".content-card__like");
 
   like.forEach((item) => {
     item.appendChild(elem.cloneNode(true));
-    item.addEventListener("click", selectDate);
   });
 
+  fieldGrid.onclick = function (event) {
+    let target = event.target;
+    if (target.tagName != "LI") return;
+    selectDate(target);
+  };
+
   function selectDate() {
-    this.classList.toggle("content-card__like--checked");
+    event.target.classList.toggle("content-card__like--checked");
   }
 }
