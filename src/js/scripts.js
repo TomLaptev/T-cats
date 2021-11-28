@@ -46,7 +46,7 @@ const renderCard = (cardData) => {
     cardData.discount +
     `</div>
   
-   <li class="content-card__like " ></li>
+   <div class="content-card__like " ></div>
    <div class="content-card__description">
   
    <div class="content-card__title">` +
@@ -208,11 +208,13 @@ function supportRender() {
 
   fieldGrid.onclick = function (event) {
     let target = event.target;
-    if (target.tagName != "LI") return;
+    if (target.tagName != "DIV") return;
     selectDate(target);
   };
 
   function selectDate() {
-    event.target.classList.toggle("content-card__like--checked");
+    if (event.target.classList.contains("content-card__like")) {
+      event.target.classList.toggle("content-card__like--checked");
+    }   
   }
 }
