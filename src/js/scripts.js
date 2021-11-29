@@ -197,24 +197,44 @@ function supportRender() {
   });
 
   /*----------------Add content-card__like--checked---------------------*/
-  const fieldGrid = document.getElementById("grid");
+
+  const sort = document.querySelector(".content-sort-settings");
+
+  let div = document.createElement("div");
+  div.id = "like";
+  div.style.display = "none";
+
+  sort.appendChild(div);
+
+  let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+  svg.setAttribute("viewBox", "0 0 46 42");
+  path.setAttribute(
+    "d",
+    "M33.781.695c-2.496 0-4.784.791-6.802 2.351-1.933 1.496-3.221 3.4-3.979 4.786-.758-1.385-2.046-3.29-3.98-4.786-2.017-1.56-4.305-2.35-6.801-2.35C5.253.695 0 6.392 0 13.947 0 22.11 6.553 27.695 16.475 36.15a571.533 571.533 0 015.579 4.798 1.435 1.435 0 001.892 0c1.985-1.735 3.895-3.363 5.58-4.8C39.447 27.697 46 22.112 46 13.95 46 6.392 40.747.694 33.781.694z"
+  );
+
+  path.setAttribute("fill", "blck");
+  svg.appendChild(path);
+  div.append(svg);
+
   const likeId = document.getElementById("like");
   const elem = likeId.querySelector("svg");
   const like = document.querySelectorAll(".content-card__like");
-
+  const fieldGrid = document.getElementById("grid");
   like.forEach((item) => {
     item.appendChild(elem.cloneNode(true));
   });
 
   fieldGrid.onclick = function (event) {
-    let target = event.target;
-    if (target.tagName != "DIV") return;
-    selectDate(target);
+    let choice = event.target;
+    if (choice.tagName != "DIV") return;
+    selectDate(choice);
   };
-
-  function selectDate() {
-    if (event.target.classList.contains("content-card__like")) {
-      event.target.classList.toggle("content-card__like--checked");
-    }   
+  function selectDate(choice) {
+    if (choice.classList.contains("content-card__like")) {
+      choice.classList.toggle("content-card__like--checked");
+    }
   }
 }
